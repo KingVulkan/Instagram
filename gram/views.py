@@ -34,3 +34,11 @@ def timeline(request):
     except:
         raise Http404
     return render(request, 'all-grams/first_time.html') 
+
+@login_required(login_url='/accounts/login/')
+def single_user(request,id):
+    try:
+        user = Profile.objects.get(id=id)
+    except:
+        raise Http404()
+    return render(request,'all-grams/single.html',{"user":user})
