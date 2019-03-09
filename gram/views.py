@@ -42,3 +42,25 @@ def single_user(request,id):
     except:
         raise Http404()
     return render(request,'all-grams/single.html',{"user":user})
+
+@login_required(login_url='/accounts/login/')
+def post(request):
+    '''
+    View function that displays a forms that allows users to upload images
+    '''
+    current_user = request.user
+
+    if request.method == 'POST':
+
+        form = ImageForm(request.POST ,request.FILES)
+
+        if form.is_valid():
+            image = form.save(commit = False)
+            image.user_key = current_user
+            image.likes +=0
+            image.save() 
+
+            return redirect( timeline)
+    else:
+        form = ImageForm() 
+    return render(request, 'all-grams/post.html',{"form" : form}) 
