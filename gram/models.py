@@ -93,7 +93,7 @@ class Comment(models.Model):
         '''
         method that save a comment on an image
         '''
-        self.sa
+        self.save()
     def delete_comment(self):
         '''
         methods that deletes a comment on an image
