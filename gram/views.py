@@ -36,12 +36,34 @@ def timeline(request):
     return render(request, 'all-grams/first_time.html') 
 
 @login_required(login_url='/accounts/login/')
+def search_results(request):
+    if 'name' in request.GET and request.GET["name"]: 
+        search_name = request.GET.get("name")
+        found_users = Profile.find_profile(search_name)
+        message =f"{search_name}" 
+
+        return render(request,'all-grams/search_results.html',{"message":message,"found_users":found_users})
+    else:
+        message = "Please enter a valid username"
+    return render(request,'all-grams/search_results.html',{"message":message})
+
+
+@login_required(login_url='/accounts/login/')
 def single_user(request,id):
     try:
         user = Profile.objects.get(id=id)
     except:
         raise Http404()
     return render(request,'all-grams/single.html',{"user":user})
+
+@login_required(login_url='/accounts/login/')
+def single_image(request,image_id): 
+    try:
+        image = Image.objects.get(id= image_id)
+    except:
+        raise Http404()
+    return render(request, 'all-grams/single_image.html',{"image":image})
+
 
 @login_required(login_url='/accounts/login/')
 def post(request):
