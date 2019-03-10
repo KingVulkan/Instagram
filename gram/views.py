@@ -32,7 +32,7 @@ def timeline(request):
                     images= list(reversed(images1))                                                                                                                                                                                                                                                                                                                                                                  
             return render(request, 'all-grams/timeline.html',{"date":date,"timeline_images":images})
     except:
-        raise Http404
+        raise Http404()
     return render(request, 'all-grams/first_time.html') 
 
 @login_required(login_url='/accounts/login/')
