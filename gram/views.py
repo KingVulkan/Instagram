@@ -182,3 +182,51 @@ def more(request,image_id):
 def view_profiles(request):
     all_profiles = Profile.objects.all()
     return render(request,'profile/all.html',{"all_profiles":all_profiles}) 
+
+@login_required(login_url='/accounts/login/')
+def follow(request,profile_id):
+    current_user = request.user
+    requested_profile = Profile.objects.get(id = profile_id)
+    is_following = Follow.objects.filter(follower = current_user,user = requested_profile).count()
+    follow_object = Follow.objects.filter(follower = current_user,user = requested_profile)
+
+    if is_following == 0:
+        follower = Follow(follower = current_user,user = requested_profile)
+        follower.save()  
+        return redirect(view_profiles)
+    else:
+        follow_object.delete()
+        return redirect(view_profiles)
+
+
+@login_required(login_url='/accounts/login/')
+def like(request,image_id):
+    requested_image = Image.objects.get(id = image_id)
+    current_user = request.user
+    if_voted = Like.objects.filter(image = requested_image,user = current_user).count()
+    unlike_parameter = Like.objects.filter(image = requested_image,user = current_user)
+    
+    if if_voted==0:
+        requested_image.likes +=1
+        requested_image.save_image()
+        like = Like(user = current_user, image = requested_image )
+        like.save_like()
+        return redirect(timeline)
+
+    else:
+        requested_image.likes -=1
+        requested_image.save_image()
+        for single_unlike in unlike_parameter:
+            single_unlike.unlike()
+        return redirect(timeline)
+    
+    return render(request,'all-grams/timeline.html')
+
+
+@login_required(login_url='/accounts/login/')
+def fist_time(request):
+    return render(request, 'all-grams/first_time.html') 
+
+def test(request):                                                                                                                                                                                                                                                                                                                                                                  
+    return render(request, 'all-grams/test.html')
+  
