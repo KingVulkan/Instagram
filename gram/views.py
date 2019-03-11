@@ -33,7 +33,7 @@ def timeline(request):
             return render(request, 'all-grams/timeline.html',{"date":date,"timeline_images":images})
     except:
         raise Http404()
-    return render(request, 'all-grams/first_time.html') 
+    return render(request,'all-grams/time.html') 
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
@@ -148,7 +148,7 @@ def profile(request):
     title = 'Profile'
     current_user = request.user
     try:
-        profile = Profile.objects.get(user_id = current_user)
+        profile = Profile.objects.get(user = current_user)
         following = Follow.objects.filter(follower = current_user)
         followers = Follow.objects.filter(user = profile) 
     except:
@@ -224,8 +224,8 @@ def like(request,image_id):
 
 
 @login_required(login_url='/accounts/login/')
-def fist_time(request):
-    return render(request, 'all-grams/first_time.html') 
+def time(request):
+    return render(request, 'all-grams/time.html') 
 
 def test(request):                                                                                                                                                                                                                                                                                                                                                                  
     return render(request, 'all-grams/test.html')

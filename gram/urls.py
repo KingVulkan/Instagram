@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    url('^$',views.timeline,name = 'timeline'),
+    url(r'^$',views.timeline,name = 'timeline'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^user/(\d+)', views.single_user, name='single_user'),
     url(r'^image/(\d+)', views.single_image, name='single_image'), 
@@ -16,7 +16,7 @@ urlpatterns=[
     url(r'^more/(\d+)', views.more, name='more'),
     url(r'^view/profiles', views.view_profiles, name='viewProfiles'),
     url(r'^follow/(\d+)',views.follow ,name='follow'), 
-    url(r'^like/(\d+)',views.like ,name='like')
+    url(r'^like/(\d+)',views.like ,name='like'),
 ]
 
 if settings.DEBUG:
