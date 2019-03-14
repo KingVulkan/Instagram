@@ -22,18 +22,23 @@ source env/bin/activate
 Inorder to clone , follow the procedure below;
 
 On GitHub, navigate to the main page of the repository.
+
 Under the repository name, click Clone or downlonload.
+
 click the paste button.
+
 Open Terminal.
+
 Change the current working directory to the location where - you want the cloned directory to be made.
+
 Type git clone, and then paste the URL you copied in Step 2 Press Enter.
 
 
 ## Psql
 
-CREATE DATABASE gallery
+CREATE DATABASE instagram
 
-connect to the database \c gallery
+connect to the database \c instagram
 
 check if tables have been created \dt
 
@@ -42,7 +47,7 @@ check if tables have been created \dt
 
 python3.6 manage.py migrate
 
-python3.6 manage.py makemigrations gallerys
+python3.6 manage.py makemigrations gram
 
 ## Running the app
 
@@ -50,7 +55,7 @@ python3.6 manage.py runserver
 
 ## Testing
 
-python3.6 manage.py test gallery
+python3.6 manage.py test gram
 
 
 ## Behaviour driven development
