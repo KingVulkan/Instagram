@@ -9,13 +9,16 @@ Abdulrahman Abdullahi Omar
 ## Setup/Installation Requirements
 
 Python version should be 3.6 -Django version 1.11 pip install django==1.11
+
 Additionally, you’ll need to make sure you have pip available. You can check this by running:
+```
 pip --Version
 Install Pipenv pip install --user pipenv
 install virtualenv and then test it
 python3.6 pip install --user --upgrade pip
 python3.6 -m virtualenv env
 source env/bin/activate
+```
 Inorder to clone , follow the procedure below;
 
 On GitHub, navigate to the main page of the repository.
@@ -29,13 +32,16 @@ Type git clone, and then paste the URL you copied in Step 2 Press Enter.
 ## Psql
 
 CREATE DATABASE gallery
+
 connect to the database \c gallery
+
 check if tables have been created \dt
 
 
 ## Run migrations
 
 python3.6 manage.py migrate
+
 python3.6 manage.py makemigrations gallerys
 
 ## Running the app
@@ -46,9 +52,20 @@ python3.6 manage.py runserver
 
 python3.6 manage.py test gallery
 
-## SPECIFICATIONS
 
-| Behaviour | Input | Output | | :---------------- | :---------------: | ------------------: | | Display Images| On the Landing Page| user can view different Images | Image expand | * On the Landing Page*| user can click on an image to view more details| | As An Admin Sign in| * On The Admin Dashboard*| Post images|
+## Behaviour driven development
+
+| Behaviour   |      Input     |  Output |
+|----------|:-------------:|------:|
+| User Sign In | Enter user details on sign in page |   Account and profile created |
+| Edit profile | Click "Edit profile" button on profile page |   Enter details |
+| User Log In | Enter user details on log in page |   User redirected to the profiles page upon successful log in |
+| Follow other users | Visit profiles page |   Click "follow" button |
+| Display Images | Visit the timeline page |   User can view Images in cronological order |
+| Like Image | Click on the "heart shaped" icon at the bootom of a picture |   Like is recorded |
+| Expand Image | Click on image |   Expanded Image on an individual page |
+| View More Details | Expand Image |  More details appear on the right side of the expanded image |
+
 
 ## Technologies Used
 
