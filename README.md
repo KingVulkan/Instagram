@@ -23,9 +23,8 @@ Under the repository name, click Clone or downlonload.
 click the paste button.
 Open Terminal.
 Change the current working directory to the location where - you want the cloned directory to be made.
-Type git clone, and then paste the URL you copied in Step 2.
-git clone https://github.com/naiyoma/gallery.git Press Enter.
-#creating a database
+Type git clone, and then paste the URL you copied in Step 2 Press Enter.
+
 
 ## Psql
 
@@ -38,7 +37,8 @@ check if tables have been created \dt
 
 python3.6 manage.py migrate
 python3.6 manage.py makemigrations gallerys
-#Running the app
+
+## Running the app
 
 python3.6 manage.py runserver
 
